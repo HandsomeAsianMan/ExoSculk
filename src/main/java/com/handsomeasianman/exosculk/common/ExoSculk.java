@@ -1,14 +1,14 @@
-package com.handsomeasianman.exosculk;
+package com.handsomeasianman.exosculk.common;
 
+import com.handsomeasianman.exosculk.common.registries.ExoSculkItems;
+import com.handsomeasianman.exosculk.common.registries.ExoSculkCreativeTabs;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -22,6 +22,10 @@ public class ExoSculk {
 
     public ExoSculk() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ExoSculkItems.register(modEventBus);
+
+        ExoSculkCreativeTabs.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
