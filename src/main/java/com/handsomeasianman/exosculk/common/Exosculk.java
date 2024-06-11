@@ -1,7 +1,8 @@
 package com.handsomeasianman.exosculk.common;
 
-import com.handsomeasianman.exosculk.common.registries.ExoSculkItems;
-import com.handsomeasianman.exosculk.common.registries.ExoSculkCreativeTabs;
+import com.handsomeasianman.exosculk.common.loot.ExosculkLootModifiers;
+import com.handsomeasianman.exosculk.common.registries.ExosculkItems;
+import com.handsomeasianman.exosculk.common.registries.ExosculkCreativeTabs;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -15,17 +16,19 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(ExoSculk.MOD_ID)
-public class ExoSculk {
+@Mod(Exosculk.MOD_ID)
+public class Exosculk {
     public static final String MOD_ID = "exosculk";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public ExoSculk() {
+    public Exosculk() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ExoSculkItems.register(modEventBus);
+        ExosculkCreativeTabs.register(modEventBus);
 
-        ExoSculkCreativeTabs.register(modEventBus);
+        ExosculkItems.register(modEventBus);
+
+        ExosculkLootModifiers.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
